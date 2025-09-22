@@ -18,7 +18,7 @@ import os
 User = get_user_model()
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
-MAGIC_LINK_BASE = getattr(settings, "MAGIC_LINK_BASE", "https://localhost:8000/api/auth/register/verify")
+MAGIC_LINK_BASE = getattr(settings, "MAGIC_LINK_BASE", "https://localhost:8000/api/auth/register/verify/")
                                                             
 class MeView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
@@ -57,9 +57,9 @@ class RegisterStartView(generics.GenericAPIView):
         token = make_registration_token(email, ttl_minutes=15)
         link = f"{MAGIC_LINK_BASE}?token={token}"
 
-        send_email(
+        send_mail(
             subject="Confirm your mail",
-            message="Hello, confirm your email entering to: {link}\nThe link expires in 15 minutes.",
+            message=f"Hello, confirm your email entering to: {link}\nThe link expires in 15 minutes.",
             from_email=getattr(settings, "DEFAULT_FROM_EMAIL", "no-reply@example.com"),
             recipient_list=[email],
             fail_silently=False,

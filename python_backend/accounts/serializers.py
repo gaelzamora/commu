@@ -21,6 +21,10 @@ class RegisterCompleteSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(allow_blank=True, required=False)
     password = serializers.CharField(write_only=True, min_length=8)
 
+    class Meta:
+        model = User
+        fields = ("registration_token", "username", "first_name", "last_name", "password")
+
     def validate_username(self, v):
         v = v.strip()
         if " " in v:
