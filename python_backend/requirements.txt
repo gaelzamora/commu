@@ -1,0 +1,12 @@
+django
+djangorestframework
+djangorestframework-simplejwt   # JWT
+django-filter
+django-environ                  # variables .env
+psycopg2-binary                 # PostgreSQL
+redis
+celery
+django-storages[boto3]          # OBS/S3
+drf-spectacular                 # documentación API
+pyotp>=2.9.0
+cryptography
