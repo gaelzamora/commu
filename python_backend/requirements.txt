@@ -1,13 +1,13 @@
 django
 djangorestframework
-djangorestframework-simplejwt   # JWT
+djangorestframework-simplejwt
 django-filter
-django-environ                  # variables .env
-psycopg2-binary                 # PostgreSQL
+django-environ
+psycopg2-binary
 redis
 celery
-django-storages[boto3]          # OBS/S3
-drf-spectacular                 # documentación API
+django-storages[boto3]
+drf-spectacular
 pyotp>=2.9.0
 cryptography
 boto3

@@ -22,7 +22,10 @@ class PresignAvatarView(APIView):
 
         url = obs_client().generate_presigned_url(
             "put_object",
-            Params={"Bucket": BUCKET, "Key": key, "ContentType": content_type},
+            Params={
+                "Bucket": BUCKET, "Key": key, 
+                "ContentType": content_type,
+            },
             ExpiresIn=600,  # 10 minutos
         )
         return Response({"upload_url": url, "key": key})
@@ -36,7 +39,11 @@ class AvatarUrlView(APIView):
 
         url = obs_client().generate_presigned_url(
             "get_object",
-            Params={"Bucket": BUCKET, "Key": request.user.avatar_key},
+            Params={
+                "Bucket": BUCKET, 
+                "Key": request.user.avatar_key,
+                "ResponseContentType": "image/jpeg",
+            },
             ExpiresIn=3600
         )
         return Response({"url": url})

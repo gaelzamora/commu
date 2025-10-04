@@ -18,7 +18,7 @@ import os
 User = get_user_model()
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
-MAGIC_LINK_BASE = getattr(settings, "MAGIC_LINK_BASE", "https://localhost:8000/api/auth/register/verify/")
+MAGIC_LINK_BASE = getattr(settings, "MAGIC_LINK_BASE", "http://localhost:8000/v1/api/auth/register/verify/")
                                                             
 class MeView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
